@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "Shows the live status of Kaggle kernels in the composer bar while the agent runs Kaggle kernel commands.",
+  "license": "MIT",
   "type": "module",
   "exports": {
     ".": "./index.js",

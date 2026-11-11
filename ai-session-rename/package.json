@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "Adds an AI rename action that titles a session from its conversation (at most 12 Chinese characters).",
+  "license": "MIT",
   "type": "module",
   "exports": {
     ".": "./index.js",

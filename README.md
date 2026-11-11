@@ -30,4 +30,4 @@ DeepSeek Harness 本地插件集合，每个子目录是一个独立的 bundle�
 
 ## 许可证
 
-仓库未附带许可证；如需对外复用，请自行添加（例如 MIT）。
+[MIT](./LICENSE) © 2026 igorwood
