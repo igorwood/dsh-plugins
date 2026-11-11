@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Kaggle kernel status",
+    "description": "Shows the live status of Kaggle kernels in the composer bar while the agent runs Kaggle kernel commands."
+  }
+}

@@ -1,0 +1,3 @@
+- insert:
+    - id: ai-session-rename
+      name: '@local/ai-session-rename'

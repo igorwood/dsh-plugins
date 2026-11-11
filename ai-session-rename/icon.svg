@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="AI session rename">
+  <rect x="2" y="2" width="60" height="60" rx="15" fill="#171233"/>
+  <rect x="2" y="2" width="60" height="60" rx="15" fill="none" stroke="#2E2560" stroke-width="2"/>
+  <path d="M17 45c6-1 19-7 25-16 2-3 1-6-2-7-3-1-6 1-8 4-5 8-9 16-15 19Z" fill="#E8E4FF"/>
+  <path d="M15 49c4 1 8 0 11-2" fill="none" stroke="#8C7BFF" stroke-width="3" stroke-linecap="round"/>
+  <path d="M45 10l2.4 6.1L53.5 18l-6.1 1.9L45 26l-2.4-6.1L36.5 18l6.1-1.9L45 10Z" fill="#B7A9FF"/>
+</svg>

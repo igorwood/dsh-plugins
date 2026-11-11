@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Kaggle 内核状态",
+    "description": "当智能体调用 Kaggle 内核时，在输入框上方显示内核的实时状态。"
+  }
+}

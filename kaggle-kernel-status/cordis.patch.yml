@@ -1,0 +1,3 @@
+- insert:
+    - id: kaggle-kernel-status
+      name: '@local/kaggle-kernel-status'

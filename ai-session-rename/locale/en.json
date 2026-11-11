@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "AI session rename",
+    "description": "Adds an AI rename action that generates a session title from its conversation, at most 12 Chinese characters."
+  }
+}
