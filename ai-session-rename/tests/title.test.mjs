@@ -3,8 +3,10 @@ import test from 'node:test';
 
 import {
   MAX_TITLE_CHARS,
+  buildSummaryPrompt,
   buildUserPrompt,
   collectConversation,
+  normalizeSummary,
   normalizeTitle,
   resolveRoute,
 } from '../lib/title.js';
@@ -65,10 +67,23 @@ test('collectConversation returns empty without usable text', () => {
   assert.equal(collectConversation({}), '');
 });
 
-test('buildUserPrompt states the 12-character bound', () => {
-  const prompt = buildUserPrompt('用户：你好');
+test('buildSummaryPrompt frames the conversation excerpt', () => {
+  const prompt = buildSummaryPrompt('用户：你好');
   assert.ok(prompt.includes('用户：你好'));
+  assert.ok(prompt.includes('总结'));
+});
+
+test('buildUserPrompt asks for a title from the summary and states the 12-character bound', () => {
+  const prompt = buildUserPrompt('用户想给会话加 AI 重命名');
+  assert.ok(prompt.includes('用户想给会话加 AI 重命名'));
+  assert.ok(prompt.includes('会话的总结'));
   assert.ok(prompt.includes(`${MAX_TITLE_CHARS} 个汉字`));
+});
+
+test('normalizeSummary strips wrappers and caps length', () => {
+  assert.equal(normalizeSummary('总结：用户想加一个按钮。'), '用户想加一个按钮。');
+  assert.equal(normalizeSummary('```\n用户要做插件\n```'), '用户要做插件');
+  assert.equal(Array.from(normalizeSummary('字'.repeat(1000))).length, 800);
 });
 
 test('resolveRoute prefers the logged request header and falls back to the default model', () => {

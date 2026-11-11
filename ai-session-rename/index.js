@@ -14,7 +14,7 @@
  * @module @local/ai-session-rename
  */
 
-import { describeError, generateTitle } from './lib/title.js';
+import { describeError, generateTitle, summarizeConversation } from './lib/title.js';
 
 /** Required Host services. */
 export const inject = ['agents', 'commands', 'llm', 'sessionTitle', 'tools'];
@@ -29,7 +29,8 @@ const COMMAND_DESCRIPTION = 'AI 重命名会话：根据当前对话内容生成
 
 /** Model-facing tool description. */
 const TOOL_DESCRIPTION = [
-  'Generate a session title from the conversation with AI and optionally apply it.',
+  'Summarize a session conversation with AI, then generate a title from that summary and optionally apply it.',
+  'action=summarize returns the conversation summary;',
   'action=generate returns the generated title without renaming;',
   'action=apply generates a title and renames the current session;',
   'action=set renames the current session with the given title;',
@@ -44,7 +45,7 @@ const TOOL_PARAMETERS = {
   properties: {
     action: {
       type: 'string',
-      enum: ['generate', 'apply', 'set', 'current'],
+      enum: ['generate', 'apply', 'set', 'current', 'summarize'],
       description: 'Operation to perform.',
     },
     title: {
@@ -105,6 +106,11 @@ export function apply(ctx) {
           throw new Error(targetId === undefined ? '当前没有可用的会话' : `会话 ${targetId} 未打开或不存在`);
         }
         const action = typeof args?.action === 'string' ? args.action : 'generate';
+
+        if (action === 'summarize') {
+          const summary = await summarizeConversation(ctx, session, exec?.signal);
+          return `会话总结：${summary}`;
+        }
 
         if (action === 'current') {
           const snapshot = ctx.sessionTitle.get(session);
